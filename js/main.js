@@ -8,23 +8,23 @@ var score;
 var player;
 
 /*----- cached element references -----*/
-document.getElementById('game-board').addEventListener('click', handleClick);
-
-document.querySelector('button').addEventListener('click', resetGame);
+var gameBoard = document.getElementById('game-board'); 
+var resetButton = document.querySelector('button'); 
 
 /*----- event listeners -----*/
-
+gameBoard.addEventListener('click', handleClick);
+resetButton.addEventListener('click', resetGame);
 
 /*----- functions -----*/
 function init(){
   score = {a: 0, b: 0, c: 0, d: 0, e: 0, f: 0, g: 0, h: 0, i: 0};
-  turn = 0;
+  turn = 1;
   player: '';
 
 }
 
 function playerTurn() {
-  if (turn % 2 !== 0) {
+  if (turn % 2 === 0) {
     player = -1;
     console.log('turn: ' + turn);
     console.log('player O turn');
@@ -35,96 +35,40 @@ function playerTurn() {
   }
 }
 
+
 function handleClick(evt) {
   var tile = evt.target.id;
   console.log('tile clicked: ' + tile);
   playerTurn();
-  switch (tile) {
-    case 'a':
-      console.log('a is being clicked');
-      if (score.a === 0) {
-        console.log('tile a empty');
-        score.a = player;
-        turn++;
-      } else {
-        return;
-      }
-      break;
-    case 'b':
-      console.log('b is being clicked');
-      if (score.b === 0) {
-        console.log('tile b empty');
-        score.b = player;
-        turn++;
-      } else {
-        return;
-      }
-      break;
-    case 'c':
-      console.log('c is being clicked');
-      if (score.c === 0) {
-        console.log('tile c empty');
-        score.c = player;
-      }
-      turn++;
-      break;
-    case 'd':
-      console.log('d is being clicked');
-      if (score.d === 0) {
-        console.log('tile d empty');
-        score.d = player;
-      }
-      turn++;
-      break;
-    case 'e':
-      console.log('e is being clicked');
-      if (score.e === 0) {
-        console.log('tile e empty');
-        score.e = player;
-      }
-      turn++;
-      break;
-    case 'f':
-      console.log('f is being clicked');
-      if (score.f === 0) {
-        console.log('tile f empty');
-        score.f = player;
-      }
-      turn++;
-      break;
-    case 'g':
-      console.log('g is being clicked');
-      if (score.g === 0) {
-        console.log('tile g empty');
-        score.g = player;
-      }
-      turn++;
-      break;
-    case 'h':
-      console.log('h is being clicked');
-      if (score.h === 0) {
-        console.log('tile h empty');
-        score.h = player;
-      }
-      turn++;
-      break;
-    case 'i':
-      console.log('i is being clicked');
-      if (score.i === 0) {
-        console.log('tile i empty');
-        score.i = player;
-      }
-      turn++;
-      break;
-    default:
-      break;
+
+  if (score[tile] === 0) {
+    score[tile] = player;
+    turn++;
+  } else {
+    return;
   }
 
+  console.log(score[tile]);
   console.log(score);
   // checkForWin();
   render(evt);
 }
 
+
+// function checkForWin() {
+//   // checks for score of 3 or -3 in 8 win cases
+
+//   // check 8 win conditions:
+
+//   // switch (tally) {
+//   //   case 'abc' :
+//   //     var tally = score.a + score.b + score.c;
+//   //     if (tally === 3 || -3) {
+//   //       console.log('winner!');
+//   //     }
+//   // }
+
+// }
 
 
 function render(evt) {
@@ -132,20 +76,27 @@ function render(evt) {
 
   if (player === 1 ) {
     evt.target.innerHTML = "X";
-    console.log('render working, player X');
   } else {
     evt.target.innerHTML = "O";
-    console.log('render working, player O')
   }
 }
 
-function resetGame() {
+function resetGame(evt) {
   player = '';
-  turn = 0;
+  turn = 1;
+  score = {a: 0, b: 0, c: 0, d: 0, e: 0, f: 0, g: 0, h: 0, i: 0 };
 
-  score 
+  var x = document.getElementsByTagName('td');
+
+  for (var i = 0; i < x.length; i++) {
+    x[i].innerHTML = '';
+  }
 
   init();
+  
+  console.log(player);
+  console.log(turn);
+  console.log(score);
   console.log('reset button was clicked');
 }
 
