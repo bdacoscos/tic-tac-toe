@@ -4,30 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tic-Tac-Toe</title>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee+Shade|Creepster|Lato" rel="stylesheet">
+  <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>Tic-Tac-Toe</h1>
 
-  <table id="game-board">
-    <tr>
-      <td id='a'></td>
-      <td id='b'></td>
-      <td id='c'></td>
-    </tr>
-    <tr>
-      <td id='d'></td>
-      <td id='e'></td>
-      <td id='f'></td>
-    </tr>
-    <tr>
-      <td id='g'></td>
-      <td id='h'></td>
-      <td id='i'></td>
-    </tr>
-  </table>
+  <header>
+    <h1>Tic-Tac-Toe</h1>
+  </header>
+  
+  <section>
+    <table id="game-board" frame="void" rules="all">
+      <tr>
+        <td id='a'></td>
+        <td id='b'></td>
+        <td id='c'></td>
+      </tr>
+      <tr>
+        <td id='d'></td>
+        <td id='e'></td>
+        <td id='f'></td>
+      </tr>
+      <tr>
+        <td id='g'></td>
+        <td id='h'></td>
+        <td id='i'></td>
+      </tr>
+    </table>
 
-  <button>Reset Game</button>
+    <button>Reset Game</button>
+  </section>
+  
+  <footer>
+    <p>Coded with &hearts; by Bri</p>
+  </footer>
 
 
   <script src="js/main.js"></script>
